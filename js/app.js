@@ -35,6 +35,34 @@
 
 // build the nav
 
+const navbarList = document.querySelector('#navbar__list');
+// const navMenu = ['Home',
+//     'Section1',
+//     'Section2',
+//     'Section3'];
+const navMenu = [];
+sectionList = document.querySelectorAll('[data-nav]');
+// sectionList.forEach(function(section){
+
+// })
+
+
+const fragment = document.createDocumentFragment();
+
+sectionList.forEach(function(section){
+    const newLink = document.createElement('a');
+    const menuItem = section.getAttribute('data-nav');
+    const idItem = section.getAttribute('id');
+    newLink.innerHTML = menuItem;
+    newLink.href = '#'.concat(idItem);
+    const newElement = document.createElement('li');
+    newElement.appendChild(newLink);
+    fragment.appendChild(newElement);
+})
+navbarList.appendChild(fragment);
+const pageHeader = document.querySelector('.page__header');
+pageHeader.style.opacity = '.5';
+
 
 // Add class 'active' to section when near top of viewport
 

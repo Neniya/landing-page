@@ -72,6 +72,13 @@ section {
 
 .navbar__menu li {
     display: inline-block;
+    margin: 1em;
+}
+
+.navbar__menu a {
+    color: #000;
+    font-size: 1.3em;
+    text-decoration: none;
 }
 
 .navbar__menu .menu__link {
@@ -96,6 +103,7 @@ section {
     width: 100%;
     z-index: 5;
 }
+
 
 /* Footer Styles */
 .page__footer {
