@@ -1,13 +1,18 @@
 # Landing Page Project
 
-## Table of Contents
+Landing page is a project work within Front End Web Developer Nanodegree Program
 
-* [Instructions](#instructions)
+## Starter project
 
-## Instructions
+The starter project had some HTML and CSS styling to display a static version of the Landing Page project. 
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## Introduction
+The Landing page is an interactive web page. 
 
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+The Landing page has:
+    * Interactive navigation menu:
+        * Navigation menu creates dynamically based on the page's sections.
+        * Navigation items are in active state an appropriate section is in the viewport.
+        * Navigation menu hides while not scrolling. It's forever present in the start of the page .
+    * Clicking on a navigation item scrolls to the appropriate section.
+    * Sections are highlighted in viewport when they are activ upon scrolling    
