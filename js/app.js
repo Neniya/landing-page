@@ -1,9 +1,9 @@
 /**
  * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
+ * Manipulating the DOM.
+ * Build navigation,
+ * Scroll to anchors from navigation,
+ * and highlight section in viewport upon scrolling.
  * 
  * Dependencies: None
  * 
@@ -18,64 +18,41 @@
  * 
 */
 
+const pageHeader = document.querySelector('.page__header');
+const navbarList = document.querySelector('#navbar__list');
 // get NodeList with all sections
-sections = document.querySelectorAll('[data-nav]');
+const sections = document.querySelectorAll('[data-nav]');
 
 /**
  * End Global Variables
- * Start Helper Functions
- * 
-*/
-
-
-
-/**
- * End Helper Functions
  * Begin Main Functions
  * 
 */
 
 // build the nav
-
-const navbarList = document.querySelector('#navbar__list');
-const navMenu = [];
-
-
-
 const fragment = document.createDocumentFragment();
 
 sections.forEach(function(section){
     const newLink = document.createElement('a');
     const menuItem = section.getAttribute('data-nav');
     const idItem = section.getAttribute('id');
+    //set the name of menu item
     newLink.innerHTML = menuItem;
+    //set the link of section for scrolling
     newLink.href = '#'.concat(idItem);
+    newLink.id = 'link'.concat(idItem);
+    //create new list element
     const newElement = document.createElement('li');
     newElement.appendChild(newLink);
     fragment.appendChild(newElement);
 })
 navbarList.appendChild(fragment);
-const pageHeader = document.querySelector('.page__header');
-pageHeader.style.opacity = '.5';
+
+//change page header style
+pageHeader.style.opacity = '.7';
 
 
 // Add class 'active' to section when near top of viewport
-window.addEventListener('scroll', setActiveSection);
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
 function setActiveSection(){ 
     // get vertical scroll position
     let y = window.pageYOffset;
@@ -84,14 +61,51 @@ function setActiveSection(){
     sections.forEach(function(section){
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
-
+        let menuItem = document.querySelector('#link'.concat(section.getAttribute('id')));
+            
         // Add/remove class 'active'
         if (sectionTop <= y && y < (sectionTop + sectionHeight)){
-            section.classList.add('active')
+            section.classList.add('active');
+            menuItem.style.cssText = 
+             'font-size: 1.4em; text-decoration: underline; font-weight: bold; color: darkred';
+
         } else {
-            section.classList.remove('active')
+            section.classList.remove('active');
+            menuItem.style.cssText = document.querySelector('.navbar__menu a').cssText;
         }
     })
-
+    
 }
 
+// mapping navigation menu
+let t;
+function mapMenu(){
+    // clear previous time out if it exist
+    if (t) {
+            clearTimeout(t);
+    }
+    // return menu when start to scrolling
+    showHiddenMenu('visible');
+    // don't hide menu if it's the head of page
+    if (window.pageYOffset !== 0){
+        t = setTimeout(() => {
+            showHiddenMenu('hidden');   
+        }, 2000);
+    }        
+}
+
+function showHiddenMenu(hidden){
+    pageHeader.style.visibility = hidden;
+}
+
+/**
+ * End Main Functions
+ * Begin Events
+ * 
+*/
+
+// Set sections as active
+window.addEventListener('scroll', setActiveSection);
+// mapping navigation menu
+window.addEventListener('scroll', mapMenu);
+window.addEventListener('pointermove', mapMenu);
