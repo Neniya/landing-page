@@ -131,6 +131,12 @@ section {
     }
 }
 
+@media (max-width:700px){
+    .main__hero{
+        padding-top: 80px;
+    }
+}
+
 section:nth-of-type(even) .landing__container {
     margin-right: 0;
     margin-left: auto;
