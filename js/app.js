@@ -18,6 +18,8 @@
  * 
 */
 
+// get NodeList with all sections
+sections = document.querySelectorAll('[data-nav]');
 
 /**
  * End Global Variables
@@ -36,20 +38,13 @@
 // build the nav
 
 const navbarList = document.querySelector('#navbar__list');
-// const navMenu = ['Home',
-//     'Section1',
-//     'Section2',
-//     'Section3'];
 const navMenu = [];
-sectionList = document.querySelectorAll('[data-nav]');
-// sectionList.forEach(function(section){
 
-// })
 
 
 const fragment = document.createDocumentFragment();
 
-sectionList.forEach(function(section){
+sections.forEach(function(section){
     const newLink = document.createElement('a');
     const menuItem = section.getAttribute('data-nav');
     const idItem = section.getAttribute('id');
@@ -65,7 +60,7 @@ pageHeader.style.opacity = '.5';
 
 
 // Add class 'active' to section when near top of viewport
-
+window.addEventListener('scroll', setActiveSection);
 
 // Scroll to anchor ID using scrollTO event
 
@@ -81,5 +76,22 @@ pageHeader.style.opacity = '.5';
 // Scroll to section on link click
 
 // Set sections as active
+function setActiveSection(){ 
+    // get vertical scroll position
+    let y = window.pageYOffset;
 
+    // Identify active section 
+    sections.forEach(function(section){
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        // Add/remove class 'active'
+        if (sectionTop <= y && y < (sectionTop + sectionHeight)){
+            section.classList.add('active')
+        } else {
+            section.classList.remove('active')
+        }
+    })
+
+}
 
