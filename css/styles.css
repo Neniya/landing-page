@@ -120,7 +120,7 @@ section {
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
 .landing__container {
-    padding: 1em;
+    padding: 2em;
     text-align: left;
 }
 
@@ -134,6 +134,15 @@ section {
 @media (max-width:700px){
     .main__hero{
         padding-top: 80px;
+    }
+
+    .navbar__menu li {
+        display: inline-block;
+        margin-bottom: 0.2em;
+        margin-top: 0.2em;
+    }
+    .navbar__menu a {
+        font-size: 1em;
     }
 }
 

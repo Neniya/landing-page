@@ -46,13 +46,11 @@ sections.forEach(function(section){
     addItemClickListener(newLink);  
     newElement.appendChild(newLink);
     fragment.appendChild(newElement);
-    console.log('a');
 })
 navbarList.appendChild(fragment);
 
 //change page header style
 pageHeader.style.opacity = '.7';
-
 
 // Add class 'active' to section when near top of viewport
 function setActiveSection(){ 
