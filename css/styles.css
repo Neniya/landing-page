@@ -94,7 +94,13 @@ section {
     color: #fff;
     transition: ease 0.3s all;
 }
-
+.active_item.active_item{
+    font-size: 1.4em;
+    text-decoration: underline;
+    font-weight: bold;
+    color: darkred;
+       
+}
 /* Header Styles */
 .page__header {
     background: #fff;

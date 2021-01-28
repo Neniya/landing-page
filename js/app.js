@@ -66,11 +66,10 @@ function setActiveSection(){
         // Add/remove class 'active'
         if (sectionTop <= y && y < (sectionTop + sectionHeight)){
             section.classList.add('active');
-            menuItem.style.cssText = 
-             'font-size: 1.4em; text-decoration: underline; font-weight: bold; color: darkred';
+            menuItem.classList.add('active_item');
         } else {
             section.classList.remove('active');
-            menuItem.style.cssText = document.querySelector('.navbar__menu a').cssText;
+            menuItem.classList.remove('active_item');
         }
     })
     
