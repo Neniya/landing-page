@@ -59,7 +59,7 @@ function setActiveSection(){
 
     // Identify active section 
     sections.forEach(function(section){
-        const sectionTop = section.offsetTop;
+        const sectionTop = section.offsetTop-100;
         const sectionHeight = section.offsetHeight;
         let menuItem = document.querySelector('#link'.concat(section.getAttribute('id')));
             
