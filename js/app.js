@@ -43,8 +43,10 @@ sections.forEach(function(section){
     newLink.id = 'link'.concat(idItem);
     //create new list element
     const newElement = document.createElement('li');
+    addItemClickListener(newLink);  
     newElement.appendChild(newLink);
     fragment.appendChild(newElement);
+    console.log('a');
 })
 navbarList.appendChild(fragment);
 
@@ -68,7 +70,6 @@ function setActiveSection(){
             section.classList.add('active');
             menuItem.style.cssText = 
              'font-size: 1.4em; text-decoration: underline; font-weight: bold; color: darkred';
-
         } else {
             section.classList.remove('active');
             menuItem.style.cssText = document.querySelector('.navbar__menu a').cssText;
@@ -98,6 +99,7 @@ function showHiddenMenu(hidden){
     pageHeader.style.visibility = hidden;
 }
 
+
 /**
  * End Main Functions
  * Begin Events
@@ -106,6 +108,16 @@ function showHiddenMenu(hidden){
 
 // Set sections as active
 window.addEventListener('scroll', setActiveSection);
+
 // mapping navigation menu
 window.addEventListener('scroll', mapMenu);
 window.addEventListener('pointermove', mapMenu);
+
+// scrolling to section from navigation menu
+function addItemClickListener(item){
+    item.addEventListener('click', function(event){
+        event.preventDefault();
+        sectionID = item.getAttribute('href');
+        document.querySelector(sectionID).scrollIntoView({behavior: 'smooth'});
+    });
+}
